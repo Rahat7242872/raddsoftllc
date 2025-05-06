@@ -1,8 +1,6 @@
 "use client" ;
 import 
 React from 'react'; // কাস্টম বাটন কম্পোনেন্ট (Tailwind/Shadcn)
-import Image from 'next/image';
-import { Button } from './ui/button';
 import heroImage from "../public/animation/hero.json";
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
