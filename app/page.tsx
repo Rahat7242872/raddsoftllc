@@ -3,10 +3,13 @@
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import animationData from "../public/animation/hero.json" ;
-
-
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    const element = document.getElementById('some-id');
+    // বা যেকোনো window/document কাজ
+  }, []);
   return (
     <motion.section initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
