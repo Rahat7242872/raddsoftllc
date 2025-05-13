@@ -2,6 +2,7 @@
 'use client'; // ক্লাইন্ট সাইড ইন্টারঅ্যাক্টিভিটির জন্য
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
+import animationData from "../public/animation/hero.json" ;
 
 
 
@@ -58,7 +59,7 @@ export default function Home() {
               {/* Lottie Animation - Right Side */}
               <div className="lg:w-1/2">
                 <Lottie
-                  animationData={require('../public/animation/hero.json')}
+                  animationData={animationData}
                   loop={true}
                   autoplay={true}
                   className="w-full h-auto max-w-2xl mx-auto"

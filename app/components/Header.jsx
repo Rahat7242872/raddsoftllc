@@ -95,14 +95,14 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === link.href ? 'bg-blue-50 text-blue-600' : 'text-white hover:bg-blue-50 hover:text-blue-600'}`}
+              className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === link.href ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'}`}
               onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>
           ))}
-          <button className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-grey-700 px-4 py-2 rounded-md text-sm font-medium block text-center">
-            Free Consultration
+          <button className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium block text-center">
+            ফ্রী কনসাল্টেশন
           </button>
         </div>
       </div>
