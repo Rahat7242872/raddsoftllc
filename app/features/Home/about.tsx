@@ -23,15 +23,18 @@ const aboutPoints = [
 
 export default function AboutRaddsoft() {
   return (
-    <section className="bg-gray-50 py-16 px-6 md:px-20">
+    <section className="bg-gray-50 py-16 px-6 md:px-20 text-black">
       <div className="max-w-5xl mx-auto text-center">
         <motion.h4
                 initial={{ y: -40, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, type: "spring" }}
-                className="text-3xl sm:text-4xl md:text-5xl text-blue-600 font-bold text-center mb-12 px-4"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 px-4"
               >
-               --Who Are--
+               About <span className="relative inline-block">
+               <span className="relative z-10 text-black-600">Us</span>
+              <span className="absolute left-0 bottom-4 w-full h-4 bg-pink-300 z-3s"></span>
+             </span>
               </motion.h4>
 
         <motion.p
@@ -54,7 +57,7 @@ export default function AboutRaddsoft() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="mb-3 items-center">{item.icon}</div>
+              <div className="mb-3 items-center-safe">{item.icon}</div>
               <h4 className="text-lg font-medium text-gray-800 mb-1">{item.title}</h4>
               <p className="text-sm text-gray-600">{item.desc}</p>
             </motion.div>

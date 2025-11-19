@@ -1,9 +1,14 @@
 // Raddsoft LLC - Business Setup Page with Popular Services
 "use client";
-
 import { CheckCircle,Globe, UserCheck, CreditCard, BarChart2 } from 'lucide-react';
 import React from "react";
 import { motion } from 'framer-motion';
+import dynamic from "next/dynamic";
+// ✅ Lottie dynamically imported
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+import businessAnimation from "public/animation/CompanyForm.json";
+import bubble from "public/animation/Bubble.json";
+import { Player } from '@lottiefiles/react-lottie-player'
 
 export default function BusinessSetupPage() {
   // --- Package data for USA & UK business launch ---
@@ -86,6 +91,20 @@ const features = [
 
       {/* --- Hero Section --- */}
       <section className="bg-gradient-to-br from-blue-50 to-blue-40 text-black py-24 px-6 md:px-20 text-center">
+        {/* Lottie Animation */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring" }}
+          className="flex-1 flex items-center justify-center"
+        >
+          <Lottie
+            animationData={businessAnimation}
+            loop
+            autoplay
+            className="w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[600px] h-auto"
+          />
+        </motion.div>
         <div className="mt-20">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Launch Your Company in the US and UK
@@ -136,10 +155,12 @@ const features = [
                 <button className="mt-6 w-32 bg-indigo-600 text-white py-2 text-sm rounded-md font-medium hover:bg-indigo-700 transition">
                   Buy Now
                 </button>
+                
               </motion.div>
             ))}
           </div>
         </div>
+        
       </section>
         {/* --- Popular Services Section --- */}
           <section className="bg-white py-20 px-6 md:px-16 mt-16">

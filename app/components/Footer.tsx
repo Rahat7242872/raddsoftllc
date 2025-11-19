@@ -50,15 +50,15 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-gray-300">
             <li className="flex items-center gap-2">
               <IoLocationSharp className="text-blue-400" />
-              1234 Business St, NY, USA
+              Montana,USA
             </li>
             <li className="flex items-center gap-2">
               <FaPhoneAlt className="text-blue-400" />
-              +1 (123) 456-7890
+              +1 (332) 232-9769
             </li>
             <li className="flex items-center gap-2">
               <MdEmail className="text-blue-400" />
-              info@raddsoft.com
+              info@raddsoftllc.com
             </li>
           </ul>
         </div>
