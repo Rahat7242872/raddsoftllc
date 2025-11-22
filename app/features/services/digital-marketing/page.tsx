@@ -8,7 +8,7 @@ import { CheckCircle } from "lucide-react";
 
 // ✅ Lottie dynamically imported
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import marketingAnimation from "public/animation/marketing.json";
+import marketingAnimation from "public/animation/Digital Marketing.json";
 
 const services = [
   { title: "SEO Optimization", description: "Improve search rankings and organic traffic with our expert SEO strategies." },

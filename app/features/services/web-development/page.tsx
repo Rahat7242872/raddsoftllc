@@ -8,7 +8,7 @@ import { CheckCircle } from 'lucide-react';
 
 // ✅ Lottie dynamically imported
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import webDevAnimation from "public/animation/webdev.json";
+import webDevAnimation from "public/animation/web_development.json";
 
 const features = [
   { title: "Custom Websites", description: "Responsive, modern websites tailored to your business goals." },
@@ -74,7 +74,7 @@ export default function WebDevelopmentPage() {
               animationData={webDevAnimation}
               loop
               autoplay
-              className="w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[600px] h-auto"
+              className="w-full max-w-[800px] sm:max-w-[500px] lg:max-w-[600px] h-auto"
             />
           </motion.div>
           <div className="mt-12 max-w-3xl mx-auto">

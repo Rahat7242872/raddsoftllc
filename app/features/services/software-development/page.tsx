@@ -8,7 +8,7 @@ import { CheckCircle } from "lucide-react";
 
 // ✅ Lottie dynamically imported
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import softwareAnimation from "public/animation/software.json";
+import softwareAnimation from "public/animation/sofiware_development.json";
 
 const features = [
   { title: "Custom Software Solutions", description: "Build software tailored to your business needs, scalable and secure." },
