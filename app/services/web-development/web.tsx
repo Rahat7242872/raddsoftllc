@@ -16,7 +16,7 @@ import {
 
 // ✅ Lottie dynamically imported
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import webDevAnimation from "../../../public/animation/Web_Development.json";
+import webDevAnimation from "public/animation/Web_Development.json";
 
 const features = [
   { title: "Custom Websites", description: "Responsive, modern websites tailored to your business goals." },
