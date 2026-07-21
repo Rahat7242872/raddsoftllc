@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from './home/page';
+import Home from './Home/page';
 export const metadata = {
   title:
     "Raddsoft LLC| Business & IT Solutions",
