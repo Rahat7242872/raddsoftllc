@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Head from "./components/Header";
+import Head from "./components/header";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsappButton";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
- title: "Raddsoft LLC - USA & UK Business Solutions",
+ title: "Raddsoft LLC - Business & IT Solutions",
   description: "Raddsoft LLC is a US-based IT company specializing in web and mobile application development, business setup consultancy, and digital transformation services. We empower startups and entrepreneurs to build scalable solutions and expand globally.",
   keywords: ["Raddsoft","Raddsoft LLC","raddsoft llc","Raddsoft USA company","Raddsoft business setup", "Business Setup USA", "Web Development", "Mobile Apps", "Marketing","Raddsoft IT agency","Raddsoft LLC", "Raddsoft USA company", "Raddsoft IT agency", "Raddsoft business setup", "Raddsoft website development",
 "USA business setup service", "UK company formation service", "LLC registration USA", "EIN for non residents", "Open USA bank account remotely", "Start a US company from abroad", "Stripe account for foreign business", "Business setup consultant", "Global business formation", "USA virtual address service",
@@ -55,6 +56,7 @@ export default function RootLayout({
         <Head/>
         {children}
         <Footer/>
+        <WhatsAppButton/>
       </body>
     </html>
   );

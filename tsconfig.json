@@ -23,6 +23,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "feature/services/business-setup.jsx", "app/features/services/business-setup/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "feature/services/business-setup.jsx", "app/services/business-setup/page.tsx"],
   "exclude": ["node_modules"]
 }

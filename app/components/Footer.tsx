@@ -1,72 +1,88 @@
 "use client";
 
+import React from "react";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-10 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-slate-900 text-white py-16 px-6 md:px-12 lg:px-20 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
         {/* Company Overview */}
-        <div>
-          <h2 className="text-2xl font-bold mb-4 text-blue-400">Raddsoft LLC</h2>
-          <p className="text-sm text-gray-300 mb-4">
-            Empowering businesses through next-gen web, mobile & cloud solutions. Your trusted IT partner in the USA and beyond.
+        <div className="space-y-4">
+          <h2 className="text-2xl font-extrabold tracking-tight">
+            Raddsoft <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">LLC</span>
+          </h2>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Empowering businesses through next-gen web applications, custom enterprise systems, and high-ROI digital marketing solutions.
           </p>
-          <div className="flex gap-4 mt-4">
-            <a href="#" className="hover:text-blue-400"><FaFacebookF /></a>
-            <a href="#" className="hover:text-blue-400"><FaTwitter /></a>
-            <a href="#" className="hover:text-blue-400"><FaLinkedinIn /></a>
+          <div className="flex gap-3 pt-2">
+            <a href="#" className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-300"><FaFacebookF size={16} /></a>
+            <a href="#" className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-300"><FaTwitter size={16} /></a>
+            <a href="#" className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-300"><FaLinkedinIn size={16} /></a>
           </div>
         </div>
 
         {/* Services */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">Services</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
-            <li><a href="#" className="hover:text-blue-400">Web Development</a></li>
-            <li><a href="#" className="hover:text-blue-400">Mobile Apps</a></li>
-            <li><a href="#" className="hover:text-blue-400">Business Setup</a></li>
-            <li><a href="#" className="hover:text-blue-400">Digital Marketing</a></li>
+          <h3 className="text-lg font-bold text-slate-200 mb-5 tracking-wide uppercase text-xs">Services</h3>
+          <ul className="space-y-3 text-sm text-slate-400">
+            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Business Setup</a></li>
+            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Software Development</a></li>
+            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Web Development</a></li>
+            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Digital Marketing</a></li>
+           
           </ul>
         </div>
 
-        {/* Useful Links */}
+        {/* Quick Links */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
-            <li><a href="#" className="hover:text-blue-400">About Us</a></li>
-            <li><a href="#" className="hover:text-blue-400">Portfolio</a></li>
-            <li><a href="#" className="hover:text-blue-400">Careers</a></li>
-            <li><a href="#" className="hover:text-blue-400">Contact</a></li>
+          <h3 className="text-lg font-bold text-slate-200 mb-5 tracking-wide uppercase text-xs">Quick Links</h3>
+          <ul className="space-y-3 text-sm text-slate-400">
+            <li><a href="/about" className="hover:text-indigo-400 transition-colors duration-200">About Us</a></li>
+            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Featured Projects</a></li>
+            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Careers</a></li>
+            <li><a href="/contact" className="hover:text-indigo-400 transition-colors duration-200">Contact Team</a></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-          <ul className="space-y-3 text-sm text-gray-300">
-            <li className="flex items-center gap-2">
-              <IoLocationSharp className="text-blue-400" />
-              Montana,USA
+          <h3 className="text-lg font-bold text-slate-200 mb-5 tracking-wide uppercase text-xs">Contact Us</h3>
+          <ul className="space-y-4 text-sm text-slate-400">
+            <li className="flex items-start gap-3">
+              <div className="mt-0.5 text-indigo-400">
+                <IoLocationSharp size={18} />
+              </div>
+              <span>Wyoming, USA</span>
             </li>
-            <li className="flex items-center gap-2">
-              <FaPhoneAlt className="text-blue-400" />
-              +1 (332) 232-9769
+            <li className="flex items-center gap-3">
+              <div className="text-indigo-400">
+                <FaPhoneAlt size={15} />
+              </div>
+              <a href="tel:+13322329769" className="hover:text-indigo-400 transition-colors">+1 (332) 232-9769</a>
             </li>
-            <li className="flex items-center gap-2">
-              <MdEmail className="text-blue-400" />
-              info@raddsoftllc.com
+            <li className="flex items-center gap-3">
+              <div className="text-indigo-400">
+                <MdEmail size={16} />
+              </div>
+              <a href="mailto:info@raddsoftllc.com" className="hover:text-indigo-400 transition-colors">info@raddsoftllc.com</a>
             </li>
           </ul>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="text-center text-sm text-gray-500 mt-10 border-t border-gray-700 pt-6">
-        &copy; {new Date().getFullYear()} Raddsoft LLC. All rights reserved.
+      <div className="max-w-7xl mx-auto text-center text-sm text-slate-500 mt-16 border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+          &copy; 2026 Raddsoft LLC. All rights reserved.
+        </div>
+        <div className="flex gap-6 text-xs text-slate-500">
+          <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-slate-400 transition-colors">Terms of Service</a>
+        </div>
       </div>
     </footer>
   );

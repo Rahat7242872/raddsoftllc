@@ -14,9 +14,9 @@ import arrowAnimation from "../../../public/animation/arrow.json"; // new arrow 
 
 const services = [
   {
-    title: "USA & UK Business Setup",
+    title: "USA Business Setup",
     description:
-      "We help you legally set up and manage your business in the USA & UK including LLC formation, EIN, bank account setup, and more.",
+      "We help you legally set up and manage your business in the USA including LLC formation, EIN, bank account setup, and more.",
     animation: businessAnimation,
     bgColor: "bg-blue-50",
     link: "features/services/business-setup/",
@@ -26,7 +26,7 @@ const services = [
     description:
       "Custom responsive websites built with modern technologies like React, Next.js and Tailwind CSS to grow your brand.",
     animation: webDevAnimation,
-    bgColor: "bg-emerald-50",
+    bgColor: "bg-red-60",
     link: "features/services/web-development/",
   },
   {
@@ -46,7 +46,16 @@ const services = [
     link: "features/services/digital-marketing/",
   },
 ];
+export const metadata = {
+  title: "Services|RaddsoftLLC",
 
+  description:
+    "Explore our professional services including USA business formation, custom web development, software solutions, mobile app development, SEO, and digital marketing.",
+
+  alternates: {
+    canonical: "https://raddsoft.com/services",
+  },
+};
 const ServicesSection = () => {
   return (
     <section className="py-16 sm:py-20 bg-white text-black">
