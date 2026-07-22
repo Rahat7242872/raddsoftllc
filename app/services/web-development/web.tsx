@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
@@ -326,7 +326,7 @@ export default function WebDevelopmentClient() {
                     rel="noopener noreferrer"
                     className="relative block aspect-video w-full overflow-hidden bg-slate-100 border-b border-slate-100"
                   >
-                    <img 
+                    <Image
                       src={project.image} 
                       alt={project.title} 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
