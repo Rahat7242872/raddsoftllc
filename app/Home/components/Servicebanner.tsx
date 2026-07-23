@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // 👈 Variants টাইপ যুক্ত করা হয়েছে
 import { ArrowUpRight, CheckCircle2, Shield, Zap, Sparkles, MessageSquare } from "lucide-react";
 
 export default function PromoOffers() {
@@ -61,14 +61,23 @@ export default function PromoOffers() {
     return `https://wa.me/${whatsappNumber}?text=${text}`;
   };
 
-  const containerVariants = {
+  // ✅ Variants এর জন্য টাইপ ডিফাইন করা হয়েছে
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.12 } },
+    show: { 
+      opacity: 1, 
+      transition: { staggerChildren: 0.12 } 
+    },
   };
 
-  const cardVariants = {
+  // ✅ 'easeOut' টাইপ ত্রুটি সমাধানের জন্য explicit typing ব্যবহার করা হয়েছে
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    show: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    },
   };
 
   return (
@@ -181,7 +190,7 @@ export default function PromoOffers() {
             <span className="text-sm font-bold text-slate-800">Need a custom bundle or custom enterprise stack?</span>
           </div>
           <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="text-sm font-extrabold text-indigo-600 hover:text-indigo-700 inline-flex items-center gap-0.5 group">
-            Let's build a deal <ArrowUpRight size={16} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            Let&apos;s build a deal <ArrowUpRight size={16} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
 
