@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
@@ -14,8 +15,13 @@ import {
   MessageCircle
 } from 'lucide-react';
 
-// ✅ Lottie dynamically imported
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+// ✅ Dynamic Import for Lottie with SSR Disabled & Loading Fallback
+const Lottie = dynamic(() => import("lottie-react"), { 
+  ssr: false,
+  loading: () => <div className="w-full h-64 bg-slate-100 rounded-2xl animate-pulse" />
+});
+
+// JSON Import (Make sure this path matches your project aliases like "@/public/...")
 import webDevAnimation from "public/animation/Web_Development.json";
 
 const features = [
@@ -110,7 +116,6 @@ const projects = [
 export default function WebDevelopmentClient() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // ✅ আপনার হোয়াটসঅ্যাপ নম্বরটি এখানে দিন (Country code সহ, যেমন: 8801xxxxxxxxx)
   const whatsappNumber = "13322329769"; 
   const whatsappMessage = encodeURIComponent("Hello RADDSOFT, I am interested in a free consultation for my web development project.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
@@ -150,10 +155,10 @@ export default function WebDevelopmentClient() {
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg hover:shadow-indigo-200 transition-all duration-300"
               >
-                Let's Build Your Project
+                Let&apos;s Build Your Project
               </a>
 
-              {/* ✅ Animated WhatsApp Free Consultation Button */}
+              {/* Animated WhatsApp Free Consultation Button */}
               <motion.a
                 href={whatsappUrl}
                 target="_blank"
@@ -184,8 +189,8 @@ export default function WebDevelopmentClient() {
             <div className="w-full max-w-[500px] lg:max-w-[550px]">
               <Lottie
                 animationData={webDevAnimation}
-                loop
-                autoplay
+                loop={true}
+                autoplay={true}
                 className="w-full h-auto"
               />
             </div>
@@ -208,7 +213,7 @@ export default function WebDevelopmentClient() {
           <div className="grid gap-8 md:grid-cols-3 sm:grid-cols-2">
             {features.map((feature, index) => (
               <motion.div
-                key={index}
+                key={feature.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -246,7 +251,7 @@ export default function WebDevelopmentClient() {
               const IconComponent = type.icon;
               return (
                 <motion.div
-                  key={index}
+                  key={type.title}
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -274,7 +279,7 @@ export default function WebDevelopmentClient() {
         </div>
       </section>
 
-      {/* Projects / Recent Work Section with Category Filtering */}
+      {/* Projects Section with Filtering */}
       <section className="py-24 px-6 md:px-20 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
@@ -319,7 +324,7 @@ export default function WebDevelopmentClient() {
                   key={project.title}
                   className="flex flex-col justify-between bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-slate-200/60 hover:-translate-y-1 transition-all duration-300 text-left group"
                 >
-                  {/* Project Image - Clickable for Live Preview */}
+                  {/* Project Image - Configured with fill & unoptimized for external URLs */}
                   <a 
                     href={project.liveLink} 
                     target="_blank" 
@@ -329,9 +334,12 @@ export default function WebDevelopmentClient() {
                     <Image
                       src={project.image} 
                       alt={project.title} 
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                    <div className="absolute inset-0 bg-indigo-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-indigo-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
                       <span className="bg-white/90 backdrop-blur-sm text-indigo-600 text-xs font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-1">
                         View Live App <ArrowUpRight size={14} />
                       </span>
