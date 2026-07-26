@@ -19,7 +19,7 @@ const services = [
       "We help you legally set up and manage your business in the USA including LLC formation, EIN, bank account setup, and more.",
     animation: businessAnimation,
     bgColor: "bg-blue-50",
-    link: "features/services/business-setup/",
+    link: "/services/business-setup/",
   },
   {
     title: "Web Design & Development",
@@ -27,7 +27,7 @@ const services = [
       "Custom responsive websites built with modern technologies like React, Next.js and Tailwind CSS to grow your brand.",
     animation: webDevAnimation,
     bgColor: "bg-red-60",
-    link: "features/services/web-development/",
+    link: "/services/web-development/",
   },
   {
     title: "Software Development",
@@ -35,7 +35,7 @@ const services = [
       "Scalable, secure, and high-performance web & mobile applications tailored to your business goals.",
     animation: softwareAnimation,
     bgColor: "bg-yellow-50",
-    link: "features/services/software-development/",
+    link: "/services/software-development/",
   },
   {
     title: "Digital Marketing",
@@ -43,7 +43,7 @@ const services = [
       "ROI-focused SEO, Social Media, and Paid Campaign strategies to drive leads and boost your online presence.",
     animation: marketingAnimation,
     bgColor: "bg-pink-50",
-    link: "features/services/digital-marketing/",
+    link: "/services/digital-marketing/",
   },
 ];
 export const metadata = {

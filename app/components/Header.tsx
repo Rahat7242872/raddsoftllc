@@ -7,7 +7,8 @@ import { ChevronDown, Menu, X } from "lucide-react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // Desktop dropdown state
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false); // Mobile dropdown-এর জন্য নতুন স্টেট
   const [scrolled, setScrolled] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -111,16 +112,15 @@ export default function Header() {
           {/* Mobile Services Accordion */}
           <div className="border-b border-slate-50 py-2">
             <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
+              type="button"
+              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
               className="w-full flex justify-between items-center text-slate-900 font-bold"
             >
               <span>Services</span>
-              <ChevronDown size={18} className={`transition-transform duration-200 text-slate-500 ${dropdownOpen ? "rotate-180 text-indigo-600" : ""}`} />
+              <ChevronDown size={18} className={`transition-transform duration-200 text-slate-500 ${mobileDropdownOpen ? "rotate-180 text-indigo-600" : ""}`} />
             </button>
             
-            {dropdownOpen && (
+            {mobileDropdownOpen && (
               <div className="mt-3 ml-4 pl-3 border-l-2 border-indigo-100 space-y-3 text-slate-600 font-medium text-sm">
                 <Link href="/services/business-setup" className="block hover:text-indigo-600 py-1 transition-colors" onClick={() => setOpen(false)}>Business Setup</Link>
                 <Link href="/services/web-development" className="block hover:text-indigo-600 py-1 transition-colors" onClick={() => setOpen(false)}>Web Development</Link>
