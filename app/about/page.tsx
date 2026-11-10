@@ -1,21 +1,26 @@
+import type { Metadata } from "next";
 import AboutClient from "./about";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, createMetadata } from "../lib/seo";
 
-export const metadata = {
-  title: "About Us | RADDSOFT LLC",
-  description: "Learn more about RADDSOFT LLC. We engineer premium web ecosystems, mobile applications, and data-driven digital marketing solutions.",
-  keywords: "RADDSOFT, about us, software development agency, digital marketing experts, Next.js developer, enterprise solutions",
-  alternates: {
-    canonical: "https://raddsoftllc.com/about",
-  },
-  openGraph: {
-    title: "About Us | RADDSOFT LLC",
-    description: "Learn more about RADDSOFT LLC. We engineer premium web ecosystems, mobile applications, and data-driven digital marketing solutions.",
-    url: "https://raddsoftllc.com/about",
-    siteName: "RADDSOFT LLC",
-    type: "website",
-  },
-};
+export const metadata: Metadata = createMetadata({
+  title: "About Us",
+  description:
+    "Meet Raddsoft LLC, a digital agency helping founders worldwide set up US companies and grow with web, software, and data-driven marketing.",
+  path: "/about",
+  keywords: ["about Raddsoft LLC", "digital agency", "software development agency", "business setup partner"],
+});
 
 export default function Page() {
-  return <AboutClient />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
+      <AboutClient />
+    </>
+  );
 }

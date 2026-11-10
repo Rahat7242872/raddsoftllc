@@ -1,30 +1,37 @@
-import WebDevelopment from "./web"
-export const metadata = {
-  title:
-    "Web Development",
+import type { Metadata } from "next";
+import WebDevelopment from "./web";
+import JsonLd from "../../components/JsonLd";
+import { breadcrumbSchema, createMetadata, serviceSchema } from "../../lib/seo";
 
-  description:
-    "Professional website design and development using React, Next.js, WordPress, Shopify, and custom ecommerce solutions for businesses worldwide.",
+const title = "Web Design & Development Services";
+const description =
+  "Custom business websites, ecommerce stores, and web applications built with React, Next.js, and Tailwind CSS. Fast, responsive, and SEO-ready.";
+const path = "/services/web-development";
 
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path,
   keywords: [
-    "Web Development",
-    "Next.js Developer",
-    "React Developer",
-    "Website Design",
-    "Business Website",
-    "Ecommerce Website",
-    "Landing Page",
-    "Raddsoft LLC",
-    "Raddsoft",
+    "web development company",
+    "Next.js developer",
+    "React developer",
+    "ecommerce website",
+    "custom web application",
   ],
-
-  alternates: {
-    canonical:
-      "https://raddsoftllc.com/services/web-development",
-  },
-};
-
+});
 
 export default function Web() {
-  return <WebDevelopment/>;
+  return (
+    <>
+      <JsonLd data={serviceSchema(title, description, path)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Web Development", path },
+        ])}
+      />
+      <WebDevelopment />
+    </>
+  );
 }

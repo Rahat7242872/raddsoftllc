@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone', //
-   images: {
-    domains: ['raddsoftllc.com'],
+  output: 'standalone',
+  images: {
+    formats: ['image/avif', 'image/webp'],
   },
   trailingSlash: false,
   reactStrictMode: true,

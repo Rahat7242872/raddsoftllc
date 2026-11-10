@@ -23,7 +23,7 @@ export default function PromoOffers() {
       id: "ecom",
       tag: "High ROI",
       title: "Premium E-Commerce Marketplace",
-      description: "Lighting fast Next.js & Tailwind multi-vendor or single-vendor e-commerce store with secure payment gateways.",
+      description: "Lightning-fast Next.js & Tailwind multi-vendor or single-vendor e-commerce store with secure payment gateways.",
       originalPrice: "$1599",
       promoPrice: "$999",
       features: ["Next.js & Tailwind CSS", "Advanced Admin Dashboard", "Automated Invoice & SMS", "SEO Optimized Architecture"],
@@ -81,9 +81,9 @@ export default function PromoOffers() {
   };
 
   return (
-    <section className="py-24 px-6 md:px-20 bg-white border-t border-slate-100 overflow-hidden relative">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-20 bg-white border-t border-slate-100 overflow-hidden relative">
       {/* Background Subtle Elements */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-r from-indigo-500/5 to-violet-500/5 blur-3xl pointer-events-none rounded-full" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-200 h-75 bg-linear-to-r from-indigo-500/5 to-violet-500/5 blur-3xl pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -115,8 +115,8 @@ export default function PromoOffers() {
               whileHover={{ y: -8 }}
               className={`rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden transition-shadow duration-300 ${
                 offer.isDark 
-                  ? `bg-gradient-to-br ${offer.gradient} text-white shadow-xl shadow-indigo-950/10` 
-                  : `bg-gradient-to-br ${offer.gradient} text-slate-900 border border-slate-100 shadow-lg shadow-slate-100/40`
+                  ? `bg-linear-to-br ${offer.gradient} text-white shadow-xl shadow-indigo-950/10` 
+                  : `bg-linear-to-br ${offer.gradient} text-slate-900 border border-slate-100 shadow-lg shadow-slate-100/40`
               }`}
             >
               {/* Card Upper Section */}
@@ -162,7 +162,7 @@ export default function PromoOffers() {
                 <div className="flex items-center gap-2">
                   <Shield size={14} className={offer.isDark ? "text-indigo-400" : "text-indigo-500"} />
                   <span className={`text-xs font-medium ${offer.isDark ? "text-slate-400" : "text-slate-500"}`}>
-                    100% Secure Contract
+                    Written Service Agreement
                   </span>
                 </div>
                 

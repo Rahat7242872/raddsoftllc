@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
+import LottiePlayer from "../../components/LottiePlayer";
 import { 
   ArrowUpRight, 
   Layers, 
@@ -16,14 +17,6 @@ import {
   Zap,
   Sparkles
 } from 'lucide-react';
-
-// ✅ Dynamic Import for Lottie with SSR Disabled & Loading Fallback
-const Lottie = dynamic(() => import("lottie-react"), { 
-  ssr: false,
-  loading: () => <div className="w-full h-64 bg-slate-100 rounded-2xl animate-pulse" />
-});
-
-import webDevAnimation from "public/animation/Web_Development.json";
 
 // ✅ সফট প্যাস্টেল কালার সহ Features array
 const features = [
@@ -99,7 +92,7 @@ const websiteTypes = [
   },
   {
     title: "Healthcare Platforms",
-    description: "HIPAA-compliant custom medical engines, clinical portal hubs, and encrypted laboratory report tracking.",
+    description: "Privacy-focused medical systems, clinical portal hubs, and encrypted laboratory report tracking.",
     icon: HeartPulse,
     cardBg: "bg-rose-50/70 hover:bg-rose-100/60 border-rose-100 hover:border-rose-300",
     iconBg: "bg-rose-200/60 text-rose-700",
@@ -132,7 +125,7 @@ const projects = [
     category: "SaaS & FinTech",
     description: "Automated legal and corporate registration systems with secure documentation.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
-    liveLink: "https://example.com/business-formation",
+    liveLink: "",
     cardBg: "bg-blue-50/60 border-blue-100",
     badgeBg: "bg-blue-100 text-blue-700",
   },
@@ -150,7 +143,7 @@ const projects = [
     category: "Artificial Intelligence",
     description: "Intelligent NLP-driven chatbots for automated support and internal workflows.",
     image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=600",
-    liveLink: "https://example.com/ai-chatbot",
+    liveLink: "",
     cardBg: "bg-purple-50/60 border-purple-100",
     badgeBg: "bg-purple-100 text-purple-700",
   },
@@ -159,7 +152,7 @@ const projects = [
     category: "Enterprise ERP",
     description: "Robust management software with custom role permissions and live tracking.",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=600",
-    liveLink: "https://example.com/erp",
+    liveLink: "",
     cardBg: "bg-emerald-50/60 border-emerald-100",
     badgeBg: "bg-emerald-100 text-emerald-700",
   },
@@ -168,7 +161,7 @@ const projects = [
     category: "SaaS & FinTech",
     description: "Interactive data visualization panels tracking revenue analytics.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
-    liveLink: "https://example.com/crm",
+    liveLink: "",
     cardBg: "bg-cyan-50/60 border-cyan-100",
     badgeBg: "bg-cyan-100 text-cyan-700",
   },
@@ -177,11 +170,17 @@ const projects = [
     category: "Web Portal",
     description: "Advanced mapping interfaces and dynamic calendars for travel networks.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
-    liveLink: "https://example.com/real-estate",
+    liveLink: "",
     cardBg: "bg-teal-50/60 border-teal-100",
     badgeBg: "bg-teal-100 text-teal-700",
   },
 ];
+
+// Projects without a public URL send visitors to the contact page.
+const projectLinkProps = (liveLink: string) =>
+  liveLink
+    ? { href: liveLink, target: "_blank", rel: "noopener noreferrer" }
+    : { href: "/contact" };
 
 export default function WebDevelopmentClient() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -198,7 +197,7 @@ export default function WebDevelopmentClient() {
     <main className="bg-[#f8fafc] text-slate-800 font-sans antialiased overflow-hidden">
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-indigo-50/80 via-slate-50/50 to-[#f8fafc] py-20 lg:py-32 px-6 md:px-20">
+      <section className="relative bg-linear-to-b from-indigo-50/80 via-slate-50/50 to-[#f8fafc] pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-32 px-5 md:px-20">
         <div className="absolute top-10 left-10 w-72 md:w-96 h-72 md:h-96 bg-indigo-200/30 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-5 right-10 w-72 md:w-96 h-72 md:h-96 bg-blue-200/30 blur-[120px] rounded-full pointer-events-none" />
 
@@ -214,7 +213,7 @@ export default function WebDevelopmentClient() {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Professional Web <br/>
-              <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-sky-600 text-transparent bg-clip-text">
+              <span className="bg-linear-to-r from-indigo-600 via-violet-600 to-sky-600 text-transparent bg-clip-text">
                 Development
               </span> Services
             </h1>
@@ -223,12 +222,12 @@ export default function WebDevelopmentClient() {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-4">
-              <a
+              <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-linear-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300"
               >
                 Let&apos;s Build Your Project
-              </a>
+              </Link>
 
               <motion.a
                 href={whatsappUrl}
@@ -256,20 +255,15 @@ export default function WebDevelopmentClient() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="w-full max-w-[500px] lg:max-w-[550px] bg-white/60 p-4 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 backdrop-blur-md">
-              <Lottie
-                animationData={webDevAnimation}
-                loop={true}
-                autoplay={true}
-                className="w-full h-auto"
-              />
+            <div className="w-full max-w-125 lg:max-w-137.5 bg-white/60 p-4 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 backdrop-blur-md">
+              <LottiePlayer src="/animation/Web_Development.json" />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Features Section (With Soft Pastel Colors) */}
-      <section className="py-20 px-6 md:px-20 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/50">
+      <section className="py-20 px-6 md:px-20 bg-linear-to-b from-white via-slate-50/50 to-slate-100/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-700 bg-indigo-50 px-3.5 py-1 rounded-full border border-indigo-100">
@@ -309,7 +303,7 @@ export default function WebDevelopmentClient() {
       </section>
 
       {/* Core Industry Platforms Section (With Soft Pastel Card BG Colors) */}
-      <section className="py-20 px-6 md:px-20 bg-gradient-to-b from-slate-100/50 via-slate-50 to-white border-t border-slate-200/60">
+      <section className="py-20 px-6 md:px-20 bg-linear-to-b from-slate-100/50 via-slate-50 to-white border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
@@ -344,13 +338,13 @@ export default function WebDevelopmentClient() {
                     <h3 className="text-xl font-bold text-slate-800 mb-2.5">{type.title}</h3>
                     <p className="text-slate-600/90 text-sm leading-relaxed mb-6">{type.description}</p>
                   </div>
-                  <a
+                  <Link
                     href="/contact"
                     className={`inline-flex items-center text-sm font-semibold ${type.btnColor} transition-colors duration-200 group/link`}
                   >
                     Discuss This System
                     <ArrowUpRight size={16} className="ml-1 transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                  </a>
+                  </Link>
                 </motion.div>
               );
             })}
@@ -359,7 +353,7 @@ export default function WebDevelopmentClient() {
       </section>
 
       {/* Projects Section with Filtering & Soft Accents */}
-      <section className="py-20 px-6 md:px-20 bg-white border-t border-slate-200/60">
+      <section id="projects" className="py-20 px-6 md:px-20 bg-white border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
             <span className="text-xs font-semibold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
@@ -369,7 +363,7 @@ export default function WebDevelopmentClient() {
               Our Recent Expertise
             </h2>
             <p className="text-slate-500 text-sm sm:text-base">
-              A showcase of the complex web ecosystems, automation systems, and SaaS platforms we build. Click to view live platforms.
+              The kinds of web platforms, automation systems, and SaaS products we build for growing businesses.
             </p>
           </div>
 
@@ -405,23 +399,21 @@ export default function WebDevelopmentClient() {
                   key={project.title}
                   className={`flex flex-col justify-between rounded-2xl border ${project.cardBg} overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 text-left group`}
                 >
-                  <a 
-                    href={project.liveLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                  <a
+                    {...projectLinkProps(project.liveLink)}
                     className="relative block aspect-video w-full overflow-hidden bg-slate-100 border-b border-slate-200/60"
                   >
                     <Image
                       src={project.image} 
                       alt={project.title} 
                       fill
-                      unoptimized
+                      unoptimized={project.image.startsWith("http")}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
                     <div className="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
                       <span className="bg-white/90 backdrop-blur-sm text-indigo-700 text-xs font-bold px-4 py-2 rounded-xl shadow-lg flex items-center gap-1">
-                        View Live App <ArrowUpRight size={14} />
+                        {project.liveLink ? "View Live Site" : "Discuss a Similar Build"} <ArrowUpRight size={14} />
                       </span>
                     </div>
                   </a>
@@ -437,12 +429,10 @@ export default function WebDevelopmentClient() {
                       <p className="text-slate-600 text-sm leading-relaxed mb-6">{project.description}</p>
                     </div>
                     <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...projectLinkProps(project.liveLink)}
                       className="inline-flex items-center text-sm font-semibold text-indigo-700 hover:text-indigo-900 transition-colors duration-200 group/link"
                     >
-                      Launch Project Website
+                      {project.liveLink ? "View Live Site" : "Discuss a Similar Build"}
                       <ArrowUpRight size={16} className="ml-1 transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>

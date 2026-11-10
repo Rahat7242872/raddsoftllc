@@ -1,131 +1,85 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
+import LottiePlayer from "../../components/LottiePlayer";
+import { siteConfig } from "../../lib/site";
 
-import React from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
-import heroAnimation from "public/animation/hero.json"
-// SSR disable for Lottie (Next.js safe)
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+const chips = [
+  { label: "USA Company Formation", className: "bg-blue-100 text-blue-700" },
+  { label: "Web Development", className: "bg-emerald-100 text-emerald-700" },
+  { label: "Mobile Apps", className: "bg-violet-100 text-violet-700" },
+  { label: "Growth Marketing", className: "bg-orange-100 text-orange-700" },
+];
 
-const HeroSection = () => {
+const stats = [
+  { value: siteConfig.stats.projects, label: "Projects Delivered" },
+  { value: siteConfig.stats.clients, label: "Global Clients" },
+  { value: siteConfig.stats.satisfaction, label: "Client Satisfaction" },
+];
+
+export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen flex items-center">
-      
-      {/* Background Blur Effects */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-72 h-72 bg-indigo-200/30 rounded-full blur-3xl"></div>
+    <section className="relative flex min-h-svh items-center overflow-hidden bg-linear-to-br from-blue-50 via-white to-indigo-50">
+      <div aria-hidden="true" className="absolute left-0 top-20 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl sm:left-10" />
+      <div aria-hidden="true" className="absolute bottom-20 right-0 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl sm:right-10" />
 
-      <div className="container mx-auto px-6 lg:px-10 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-
-          {/* LEFT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
-
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-medium text-sm mb-6">
-              🚀 Trusted Digital Partner for Global Businesses
+      <div className="container relative z-10 mx-auto px-5 pb-16 pt-28 sm:px-6 lg:px-10 lg:pt-32">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="animate-fade-up text-center lg:text-left">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white/70 px-4 py-2 text-xs font-semibold text-indigo-700 shadow-sm backdrop-blur sm:text-sm">
+              <Sparkles size={15} /> Trusted Digital Partner for Global Businesses
             </div>
 
-            {/* Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-900">
-              Build, Launch &
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+              Build, Launch &amp;
+              <span className="block bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text pb-1 text-transparent">
                 Scale Your Business
               </span>
             </h1>
 
-            {/* Description */}
-            <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl">
-              Helping entrepreneurs, startups, and enterprises establish
-              businesses in the USA, develop powerful web and mobile
-              applications, and accelerate growth through modern digital
-              marketing strategies.
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg md:text-xl lg:mx-0">
+              We help entrepreneurs and companies establish businesses in the USA, build powerful web and
+              mobile applications, and accelerate growth with modern digital marketing.
             </p>
 
-            {/* Services */}
-            <div className="flex flex-wrap gap-3 mt-8 justify-center lg:justify-start">
-              <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
-                USA Company Formation
-              </span>
+            <ul className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
+              {chips.map((chip) => (
+                <li key={chip.label} className={`rounded-full px-3.5 py-1.5 text-xs font-medium sm:px-4 sm:py-2 sm:text-sm ${chip.className}`}>
+                  {chip.label}
+                </li>
+              ))}
+            </ul>
 
-              <span className="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium">
-                Web Development
-              </span>
-
-              <span className="bg-violet-100 text-violet-700 px-4 py-2 rounded-full text-sm font-medium">
-                Mobile Apps
-              </span>
-
-              <span className="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium">
-                Growth Marketing
-              </span>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center lg:justify-start">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold shadow-xl"
+            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 px-8 py-4 font-semibold text-white shadow-xl shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-indigo-500/40"
               >
                 Start Your Project
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold"
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-indigo-600 px-8 py-4 font-semibold text-indigo-700 transition-colors hover:bg-indigo-50"
               >
                 Explore Services
-              </motion.button>
+              </a>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-14 text-center lg:text-left">
-              <div>
-                <h3 className="text-3xl font-bold text-blue-600">100+</h3>
-                <p className="text-gray-600 text-sm">Projects Delivered</p>
-              </div>
+            <dl className="mt-12 grid grid-cols-3 gap-4 text-center sm:gap-6 lg:text-left">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dd className="text-2xl font-bold text-indigo-600 sm:text-3xl">{stat.value}</dd>
+                  <dt className="mt-1 text-xs text-slate-600 sm:text-sm">{stat.label}</dt>
+                </div>
+              ))}
+            </dl>
+          </div>
 
-              <div>
-                <h3 className="text-3xl font-bold text-blue-600">50+</h3>
-                <p className="text-gray-600 text-sm">Global Clients</p>
-              </div>
-
-              <div>
-                <h3 className="text-3xl font-bold text-blue-600">99%</h3>
-                <p className="text-gray-600 text-sm">Client Satisfaction</p>
-              </div>
-            </div>
-
-          </motion.div>
-
-          {/* RIGHT ANIMATION */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9 }}
-            className="flex justify-center"
-          >
-            <div className="w-full max-w-2xl">
-              <Lottie
-                animationData={heroAnimation}
-                loop
-                autoplay
-                className="w-full h-auto"
-              />
-            </div>
-          </motion.div>
-
+          <div className="mx-auto w-full max-w-sm sm:max-w-md lg:max-w-2xl">
+            <LottiePlayer src="/animation/hero.json" />
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

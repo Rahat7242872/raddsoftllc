@@ -1,29 +1,38 @@
+import type { Metadata } from "next";
 import BusinessSetup from "./business-setup";
+import JsonLd from "../../components/JsonLd";
+import { breadcrumbSchema, createMetadata, serviceSchema } from "../../lib/seo";
 
-export const metadata = {
-  title:
-    "USA Business Setup",
+const title = "USA LLC Formation & Business Setup";
+const description =
+  "Start your US company from anywhere. LLC formation, EIN, registered agent, business address, bank account setup, and Amazon seller packages from $149.";
+const path = "/services/business-setup";
 
-  description:
-    "Start and grow your US business with LLC formation, EIN registration, virtual business address, reseller permit, DUNS number, business phone, and compliance services.",
-
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path,
   keywords: [
-    "LLC Formation",
-    "USA LLC",
-    "EIN Registration",
-    "Virtual Address",
-    "Business Compliance",
-    "Amazon Seller Account",
-    "US Business Setup",
-    "Raddsoft LLC",
-    "Raddsoft",
+    "USA LLC formation",
+    "Wyoming LLC",
+    "EIN registration",
+    "US company for non-residents",
+    "registered agent",
+    "Amazon seller account",
   ],
-
-  alternates: {
-    canonical: "https://raddsoft.com/services/business",
-  },
-};
+});
 
 export default function Business() {
-  return <BusinessSetup/>;
+  return (
+    <>
+      <JsonLd data={serviceSchema(title, description, path)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Business Setup", path },
+        ])}
+      />
+      <BusinessSetup />
+    </>
+  );
 }

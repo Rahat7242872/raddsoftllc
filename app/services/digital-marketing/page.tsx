@@ -1,28 +1,37 @@
-import DigitalMarketing from "./digital"
-export const metadata = {
-  title:
-    "Digital Marketing",
+import type { Metadata } from "next";
+import DigitalMarketing from "./digital";
+import JsonLd from "../../components/JsonLd";
+import { breadcrumbSchema, createMetadata, serviceSchema } from "../../lib/seo";
 
-  description:
-    "Increase traffic, generate leads, and grow your business with SEO, Google Ads, Facebook Ads, social media marketing, and conversion-focused digital marketing.",
+const title = "Digital Marketing, SEO & Paid Ads";
+const description =
+  "Grow traffic and leads with SEO, Google Ads, Facebook Ads, social media, email marketing, and clear reporting built around your revenue goals.";
+const path = "/services/digital-marketing";
 
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path,
   keywords: [
-    "SEO Agency",
-    "Google Ads",
-    "Facebook Marketing",
-    "Social Media Marketing",
-    "Digital Marketing",
-    "Content Marketing",
-    "Raddsoft LLC",
-    "Raddsoft",
+    "digital marketing agency",
+    "SEO services",
+    "Google Ads management",
+    "Facebook Ads management",
+    "social media marketing",
   ],
-
-  alternates: {
-    canonical:
-      "https://raddsoftllc.com/services/digital-marketing",
-  },
-};
+});
 
 export default function Digital() {
-  return <DigitalMarketing/>;
+  return (
+    <>
+      <JsonLd data={serviceSchema(title, description, path)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Digital Marketing", path },
+        ])}
+      />
+      <DigitalMarketing />
+    </>
+  );
 }
