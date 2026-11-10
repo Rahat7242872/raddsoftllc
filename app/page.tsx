@@ -1,61 +1,38 @@
-import React from 'react'
-import Home from './Home/page';
-export const metadata = {
-  title:
-    "Raddsoft LLC| Business & IT Solutions",
+import Hero from "./Home/components/Hero";
+import ServicesSection from "./Home/components/ServicesSection";
+import ServiceBanners from "./Home/components/Servicebanner";
+import Process from "./Home/components/Process";
+import About from "./Home/components/About";
+import CtaBanner from "./Home/components/CtaBanner";
+import type { Metadata } from "next";
+import { createMetadata } from "./lib/seo";
 
+export const metadata: Metadata = createMetadata({
+  title: "USA LLC Formation, Web & Software Development | Raddsoft LLC",
+  absoluteTitle: true,
   description:
-    "Raddsoft LLC helps entrepreneurs and businesses with USA LLC formation, EIN registration, business compliance, custom web development, software development, mobile apps, and digital marketing services.",
-
+    "Form your US LLC, get your EIN, and grow with custom websites, software, and digital marketing. Raddsoft LLC helps founders worldwide launch and scale.",
+  path: "/",
   keywords: [
-    "USA Business Setup",
-    "LLC Formation",
-    "EIN Registration",
-    "Web Development Company",
-    "Software Development",
-    "Next.js Development",
-    "React Development",
-    "Digital Marketing Agency",
-    "SEO Services",
-    "Business Solutions USA",
+    "USA LLC formation",
+    "EIN registration",
+    "US company for non-residents",
+    "web development company",
+    "software development",
+    "digital marketing agency",
+    "Raddsoft LLC",
   ],
+});
 
-  alternates: {
-    canonical: "https://raddsoft.com",
-  },
-
-  openGraph: {
-    title: "RADDSOFT LLC",
-    description:
-      "Professional USA business setup, web development, software solutions, and digital marketing services.",
-    url: "https://raddsoft.com",
-    siteName: "RADDSOFT LLC",
-    images: [
-      {
-        url: "/images/og-home.jpg",
-        width: 1200,
-        height: 630,
-        alt: "RADDSOFT LLC",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "RADDSOFT LLC",
-    description:
-      "USA Business Setup, Web Development, Software Development & Digital Marketing.",
-    images: ["/images/og-home.jpg"],
-  },
-};
-function page() {
+export default function HomePage() {
   return (
-    <div>
-       <Home/>
-    </div>
-  )
+    <main>
+      <Hero />
+      <ServicesSection />
+      <ServiceBanners />
+      <Process />
+      <About />
+      <CtaBanner />
+    </main>
+  );
 }
-
-export default page

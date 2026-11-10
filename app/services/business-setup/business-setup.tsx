@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
@@ -15,10 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 
-// Dynamic Imports for Next.js SSR Compatibility
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
-import businessAnimation from "public/animation/Companyfrom.json";
+import LottiePlayer from "../../components/LottiePlayer";
 
 export default function BusinessSetupPage() {
   const packages = [
@@ -33,7 +29,7 @@ export default function BusinessSetupPage() {
       features: [
         "US Company Formation (LLC or Corp)",
         "1 Year Registered Agent & Business Address",
-        "Mail Forwarding Service (10 forwards/month)",
+        "Mail Forwarding Service (10 forwards/year)",
         "Employer Identification Number (EIN)",
         "Custom Operating Agreement",
         "BOI (Beneficial Ownership Info) Filing",
@@ -90,7 +86,7 @@ export default function BusinessSetupPage() {
       name: "Texas Amazon",
       price: "$849",
       additional: "All Inclusive",
-      accentBg: "bg-gradient-to-br from-amber-50/80 via-orange-50/30 to-white",
+      accentBg: "bg-linear-to-br from-amber-50/80 via-orange-50/30 to-white",
       borderColor: "hover:border-amber-300",
       badgeBg: "bg-amber-100/80 text-amber-800 border-amber-200",
       checkColor: "text-amber-500",
@@ -115,7 +111,7 @@ export default function BusinessSetupPage() {
       name: "Wyoming Amazon",
       price: "$649",
       additional: "All Inclusive",
-      accentBg: "bg-gradient-to-br from-cyan-50/80 via-sky-50/30 to-white",
+      accentBg: "bg-linear-to-br from-cyan-50/80 via-sky-50/30 to-white",
       borderColor: "hover:border-cyan-300",
       badgeBg: "bg-cyan-100/80 text-cyan-800 border-cyan-200",
       checkColor: "text-cyan-600",
@@ -140,7 +136,7 @@ export default function BusinessSetupPage() {
       name: "Florida Amazon",
       price: "$639",
       additional: "All Inclusive",
-      accentBg: "bg-gradient-to-br from-violet-50/80 via-purple-50/30 to-white",
+      accentBg: "bg-linear-to-br from-violet-50/80 via-purple-50/30 to-white",
       borderColor: "hover:border-violet-300",
       badgeBg: "bg-violet-100/80 text-violet-800 border-violet-200",
       checkColor: "text-violet-500",
@@ -290,7 +286,7 @@ export default function BusinessSetupPage() {
     <main className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans antialiased overflow-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative bg-gradient-to-b from-blue-50/80 via-slate-50/50 to-[#f8fafc] text-slate-900 py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-20">
+      <section className="relative bg-linear-to-b from-blue-50/80 via-slate-50/50 to-[#f8fafc] text-slate-900 pt-28 pb-16 sm:pt-32 sm:pb-20 md:pb-24 lg:pt-36 px-4 sm:px-8 md:px-20">
         <div className="absolute top-10 left-10 w-72 md:w-96 h-72 md:h-96 bg-blue-200/30 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-5 right-10 w-72 md:w-96 h-72 md:h-96 bg-indigo-200/30 blur-[120px] rounded-full pointer-events-none" />
 
@@ -306,7 +302,7 @@ export default function BusinessSetupPage() {
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.2] sm:leading-[1.15]">
               Launch Your Company <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 text-transparent bg-clip-text">
+              <span className="bg-linear-to-r from-blue-600 via-indigo-600 to-sky-600 text-transparent bg-clip-text">
                 in the United States
               </span>
             </h1>
@@ -315,9 +311,9 @@ export default function BusinessSetupPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8">
-              <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 font-semibold text-white shadow-md shadow-blue-500/20 hover:opacity-95 active:scale-[0.98] transition-all">
+              <a href="#packages" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-linear-to-r from-blue-600 to-indigo-600 font-semibold text-white shadow-md shadow-blue-500/20 hover:opacity-95 active:scale-[0.98] transition-all">
                 Start Business Now <ArrowRight size={16} />
-              </button>
+              </a>
               <motion.a
                 href={whatsappUrl}
                 target="_blank"
@@ -348,14 +344,14 @@ export default function BusinessSetupPage() {
             className="lg:col-span-5 flex justify-center mt-6 lg:mt-0"
           >
             <div className="w-full max-w-sm sm:max-w-md bg-white/60 p-4 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 backdrop-blur-md">
-              <Lottie animationData={businessAnimation} loop autoplay className="w-full h-auto" />
+              <LottiePlayer src="/animation/Companyfrom.json" />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* --- BUSINESS LAUNCH PACKAGES --- */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+      <section id="packages" className="py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
             Transparent Pricing
@@ -364,7 +360,7 @@ export default function BusinessSetupPage() {
             Global Business Launch Packages
           </h2>
           <p className="text-slate-500 mt-2 text-xs sm:text-sm">
-            Simple corporate setups with premium features and soft-pastel styling.
+            Everything you need to form and run your US company, in one clear price.
           </p>
         </div>
 
@@ -378,7 +374,7 @@ export default function BusinessSetupPage() {
               whileHover={{ y: -6 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className={`relative bg-gradient-to-b ${pkg.accentColor} bg-white rounded-3xl border border-slate-200/70 shadow-sm hover:shadow-xl p-6 sm:p-7 flex flex-col justify-between ${pkg.borderColor} transition-all duration-300`}
+              className={`relative bg-linear-to-b ${pkg.accentColor} bg-white rounded-3xl border border-slate-200/70 shadow-sm hover:shadow-xl p-6 sm:p-7 flex flex-col justify-between ${pkg.borderColor} transition-all duration-300`}
             >
               <div>
                 <div className="flex justify-between items-center">
@@ -420,7 +416,7 @@ export default function BusinessSetupPage() {
       </section>
 
       {/* --- AMAZON PACKAGES --- */}
-      <section className="py-16 sm:py-20 bg-gradient-to-b from-slate-100/60 via-slate-50 to-white border-y border-slate-200/60 px-4 sm:px-6">
+      <section className="py-16 sm:py-20 bg-linear-to-b from-slate-100/60 via-slate-50 to-white border-y border-slate-200/60 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <span className="text-xs font-semibold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
@@ -481,7 +477,7 @@ export default function BusinessSetupPage() {
       </section>
 
       {/* --- A LA CARTE SERVICES (With Soft Pastel Card BG Colors) --- */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/50">
+      <section className="py-16 sm:py-24 bg-linear-to-b from-white via-slate-50/50 to-slate-100/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-700 bg-blue-50 px-3.5 py-1 rounded-full border border-blue-100">
@@ -516,7 +512,7 @@ export default function BusinessSetupPage() {
                     {service.title}
                   </h3>
 
-                  <p className="text-xs text-slate-600/90 mt-2.5 leading-relaxed sm:min-h-[55px]">
+                  <p className="text-xs text-slate-600/90 mt-2.5 leading-relaxed sm:min-h-13.75">
                     {service.description}
                   </p>
                 </div>
@@ -544,7 +540,7 @@ export default function BusinessSetupPage() {
       </section>
 
       {/* --- VALUE PROPOSITION SECTION --- */}
-      <section className="bg-gradient-to-b from-slate-100/50 to-white py-16 sm:py-20 px-4 sm:px-6">
+      <section className="bg-linear-to-b from-slate-100/50 to-white py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -556,7 +552,7 @@ export default function BusinessSetupPage() {
               Empowering Startups, Accelerating Growth
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-slate-500 leading-relaxed">
-              At <span className="font-semibold text-slate-700">RaddSoft Technology</span>, we simplify global compliance frameworks so you can focus strictly on core product scaling.
+              At <span className="font-semibold text-slate-700">Raddsoft LLC</span>, we simplify global compliance frameworks so you can focus strictly on core product scaling.
             </p>
           </motion.div>
 

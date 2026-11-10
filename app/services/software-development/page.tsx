@@ -1,25 +1,37 @@
+import type { Metadata } from "next";
 import SoftwareDevelopmentPage from "./software";
+import JsonLd from "../../components/JsonLd";
+import { breadcrumbSchema, createMetadata, serviceSchema } from "../../lib/seo";
 
-export const metadata = {
-  title: "Software Development | RADDSOFT LLC",
-  description:
-    "Professional custom software development services including CRM, ERP, SaaS, AI, Web Applications and Mobile Apps.",
+const title = "Custom Software & App Development";
+const description =
+  "Custom CRM, ERP, SaaS, AI, web, and mobile app development for startups and growing companies, with cloud deployment and long-term support.";
+const path = "/services/software-development";
+
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path,
   keywords: [
-    "Software Development",
-    "CRM",
-    "ERP",
-    "SaaS",
-    "AI Development",
-    "React Native",
-    "Next.js",
-    "RADDSOFT LLC",
+    "custom software development",
+    "mobile app development",
+    "CRM development",
+    "ERP software",
+    "SaaS development",
   ],
-  alternates: {
-    canonical:
-      "https://raddsoftllc.com/services/software-development",
-  },
-};
+});
 
-export default function software() {
-  return <SoftwareDevelopmentPage />;
+export default function Software() {
+  return (
+    <>
+      <JsonLd data={serviceSchema(title, description, path)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Software Development", path },
+        ])}
+      />
+      <SoftwareDevelopmentPage />
+    </>
+  );
 }

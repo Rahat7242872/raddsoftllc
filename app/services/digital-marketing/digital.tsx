@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import LottiePlayer from "../../components/LottiePlayer";
 import { 
   ArrowUpRight, 
   Search, 
@@ -15,14 +16,6 @@ import {
   Sparkles,
   Zap
 } from "lucide-react";
-
-// ✅ Dynamic Import for Lottie with SSR Disabled & Loading Fallback
-const Lottie = dynamic(() => import("lottie-react"), { 
-  ssr: false,
-  loading: () => <div className="w-full h-64 bg-slate-100 rounded-2xl animate-pulse" />
-});
-
-import marketingAnimation from "public/animation/Digital Marketing.json";
 
 // ✅ সফট প্যাস্টেল কালার সহ Services array
 const services = [
@@ -137,7 +130,7 @@ export default function DigitalMarketingPage() {
     <main className="bg-[#f8fafc] text-slate-800 font-sans antialiased overflow-hidden">
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-indigo-50/80 via-slate-50/50 to-[#f8fafc] py-20 lg:py-32 px-6 md:px-20">
+      <section className="relative bg-linear-to-b from-indigo-50/80 via-slate-50/50 to-[#f8fafc] pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-32 px-5 md:px-20">
         <div className="absolute top-10 left-10 w-72 md:w-96 h-72 md:h-96 bg-indigo-200/30 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-5 right-10 w-72 md:w-96 h-72 md:h-96 bg-blue-200/30 blur-[120px] rounded-full pointer-events-none" />
 
@@ -154,7 +147,7 @@ export default function DigitalMarketingPage() {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Accelerate Your Digital <br />
-              <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-sky-600 text-transparent bg-clip-text">
+              <span className="bg-linear-to-r from-indigo-600 via-violet-600 to-sky-600 text-transparent bg-clip-text">
                 Marketing
               </span>
             </h1>
@@ -164,12 +157,12 @@ export default function DigitalMarketingPage() {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <a
+              <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-linear-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all duration-300"
               >
                 Scale Your Brand Traffic
-              </a>
+              </Link>
 
               {/* WhatsApp Button with Pulsing Glow */}
               <motion.a
@@ -206,20 +199,15 @@ export default function DigitalMarketingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="w-full max-w-[500px] lg:max-w-[550px] bg-white/60 p-4 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 backdrop-blur-md">
-              <Lottie
-                animationData={marketingAnimation}
-                loop={true}
-                autoplay={true}
-                className="w-full h-auto"
-              />
+            <div className="w-full max-w-125 lg:max-w-137.5 bg-white/60 p-4 rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 backdrop-blur-md">
+              <LottiePlayer src="/animation/Digital Marketing.json" />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Services Grid Section (With Soft Pastel Colors) */}
-      <section className="py-20 px-6 md:px-20 bg-gradient-to-b from-white via-slate-50/50 to-slate-100/50">
+      <section className="py-20 px-6 md:px-20 bg-linear-to-b from-white via-slate-50/50 to-slate-100/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-700 bg-indigo-50 px-3.5 py-1 rounded-full border border-indigo-100">
@@ -259,7 +247,7 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Core Strategies Section (With Soft Pastel Colors) */}
-      <section className="py-20 px-6 md:px-20 bg-gradient-to-b from-slate-100/50 via-slate-50 to-white border-t border-slate-200/60">
+      <section className="py-20 px-6 md:px-20 bg-linear-to-b from-slate-100/50 via-slate-50 to-white border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
@@ -297,13 +285,13 @@ export default function DigitalMarketingPage() {
                     <h3 className="text-xl font-bold text-slate-800 mt-4 mb-2.5">{strat.title}</h3>
                     <p className="text-slate-600/90 text-sm leading-relaxed mb-6">{strat.description}</p>
                   </div>
-                  <a
+                  <Link
                     href="/contact"
                     className={`inline-flex items-center text-sm font-semibold ${strat.btnColor} transition-colors duration-200 group/link`}
                   >
                     Audit This Channel
                     <ArrowUpRight size={16} className="ml-1 transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                  </a>
+                  </Link>
                 </motion.div>
               );
             })}

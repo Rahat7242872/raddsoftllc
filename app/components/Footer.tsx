@@ -1,87 +1,107 @@
-"use client";
-
-import React from "react";
-import { FaFacebookF, FaLinkedinIn, FaTwitter, FaPhoneAlt } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import Link from "next/link";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { serviceLinks, siteConfig, whatsappUrl } from "../lib/site";
+
+const linkClass = "transition-colors duration-200 hover:text-indigo-400";
+const headingClass = "mb-5 text-xs font-bold uppercase tracking-wide text-slate-200";
 
 export default function Footer() {
-  return (
-    <footer className="bg-slate-900 text-white py-16 px-6 md:px-12 lg:px-20 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+  const { address } = siteConfig;
 
-        {/* Company Overview */}
+  return (
+    <footer className="border-t border-slate-800 bg-slate-900 px-6 py-14 text-white md:px-12 md:py-16 lg:px-20">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
           <h2 className="text-2xl font-extrabold tracking-tight">
-            Raddsoft <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">LLC</span>
+            Raddsoft{" "}
+            <span className="bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">LLC</span>
           </h2>
-          <p className="text-sm text-slate-400 leading-relaxed">
-            Empowering businesses through next-gen web applications, custom enterprise systems, and high-ROI digital marketing solutions.
+          <p className="text-sm leading-relaxed text-slate-400">
+            Helping founders launch US companies and grow them with modern websites, custom software, and
+            performance marketing.
           </p>
-          <div className="flex gap-3 pt-2">
-            <a href="#" className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-300"><FaFacebookF size={16} /></a>
-            <a href="#" className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-300"><FaTwitter size={16} /></a>
-            <a href="#" className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-indigo-600 hover:text-white transition-all duration-300"><FaLinkedinIn size={16} /></a>
-          </div>
+          <a
+            href={whatsappUrl("Hello Raddsoft LLC, I would like to discuss a project.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-emerald-500"
+          >
+            <FaWhatsapp size={16} /> Chat on WhatsApp
+          </a>
         </div>
 
-        {/* Services */}
         <div>
-          <h3 className="text-lg font-bold text-slate-200 mb-5 tracking-wide uppercase text-xs">Services</h3>
+          <h3 className={headingClass}>Services</h3>
           <ul className="space-y-3 text-sm text-slate-400">
-            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Business Setup</a></li>
-            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Software Development</a></li>
-            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Web Development</a></li>
-            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Digital Marketing</a></li>
-           
+            {serviceLinks.map((service) => (
+              <li key={service.href}>
+                <Link href={service.href} className={linkClass}>
+                  {service.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-bold text-slate-200 mb-5 tracking-wide uppercase text-xs">Quick Links</h3>
+          <h3 className={headingClass}>Quick Links</h3>
           <ul className="space-y-3 text-sm text-slate-400">
-            <li><a href="/about" className="hover:text-indigo-400 transition-colors duration-200">About Us</a></li>
-            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Featured Projects</a></li>
-            <li><a href="#" className="hover:text-indigo-400 transition-colors duration-200">Careers</a></li>
-            <li><a href="/contact" className="hover:text-indigo-400 transition-colors duration-200">Contact Team</a></li>
+            <li>
+              <Link href="/about" className={linkClass}>
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/web-development#projects" className={linkClass}>
+                Featured Projects
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className={linkClass}>
+                Contact Team
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-bold text-slate-200 mb-5 tracking-wide uppercase text-xs">Contact Us</h3>
+          <h3 className={headingClass}>Contact Us</h3>
           <ul className="space-y-4 text-sm text-slate-400">
             <li className="flex items-start gap-3">
-              <div className="mt-0.5 text-indigo-400">
-                <IoLocationSharp size={18} />
-              </div>
-              <span>Wyoming, USA</span>
+              <IoLocationSharp size={18} className="mt-0.5 shrink-0 text-indigo-400" />
+              <address className="not-italic">
+                {address.street}
+                <br />
+                {address.city}, {address.region} {address.postalCode}
+              </address>
             </li>
             <li className="flex items-center gap-3">
-              <div className="text-indigo-400">
-                <FaPhoneAlt size={15} />
-              </div>
-              <a href="tel:+13322329769" className="hover:text-indigo-400 transition-colors">+1 (332) 232-9769</a>
+              <FaPhoneAlt size={15} className="shrink-0 text-indigo-400" />
+              <a href={siteConfig.phoneHref} className={linkClass}>
+                {siteConfig.phoneDisplay}
+              </a>
             </li>
             <li className="flex items-center gap-3">
-              <div className="text-indigo-400">
-                <MdEmail size={16} />
-              </div>
-              <a href="mailto:info@raddsoftllc.com" className="hover:text-indigo-400 transition-colors">info@raddsoftllc.com</a>
+              <MdEmail size={16} className="shrink-0 text-indigo-400" />
+              <a href={`mailto:${siteConfig.email}`} className={`${linkClass} break-all`}>
+                {siteConfig.email}
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto text-center text-sm text-slate-500 mt-16 border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>
-          &copy; 2026 Raddsoft LLC. All rights reserved.
-        </div>
-        <div className="flex gap-6 text-xs text-slate-500">
-          <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-slate-400 transition-colors">Terms of Service</a>
+      <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-8 text-center text-sm text-slate-400 sm:flex-row">
+        <p>&copy; {new Date().getFullYear()} Raddsoft LLC. All rights reserved.</p>
+        <div className="flex gap-6 text-xs">
+          <Link href="/privacy-policy" className="transition-colors hover:text-white">
+            Privacy Policy
+          </Link>
+          <Link href="/terms-of-service" className="transition-colors hover:text-white">
+            Terms of Service
+          </Link>
         </div>
       </div>
     </footer>

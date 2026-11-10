@@ -1,14 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, MessageCircle, Code2, Rocket, ShieldCheck, Users2 } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Code2, Rocket, ShieldCheck } from "lucide-react";
+import { siteConfig } from "../lib/site";
 
 const stats = [
-  { value: "99%", label: "Client Satisfaction" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "24/7", label: "Dedicated Support" },
-  { value: "2+", label: "Core Industries Served" },
+  { value: siteConfig.stats.satisfaction, label: "Client Satisfaction" },
+  { value: siteConfig.stats.projects, label: "Projects Delivered" },
+  { value: siteConfig.stats.support, label: "WhatsApp Support" },
+  { value: "4", label: "Core Services" },
 ];
 
 const pillars = [
@@ -38,7 +40,7 @@ export default function AboutClient() {
   return (
     <main className="bg-slate-50 text-slate-900 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-20 lg:py-32 px-6 md:px-20 border-b border-slate-100">
+      <section className="relative bg-linear-to-br from-indigo-50 via-white to-blue-50 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-32 px-5 md:px-20 border-b border-slate-100">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <motion.span 
             initial={{ opacity: 0, y: 15 }}
@@ -55,7 +57,7 @@ export default function AboutClient() {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight"
           >
             Engineering High-Performance <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-violet-600">
               Digital Solutions
             </span>
           </motion.h1>
@@ -76,12 +78,12 @@ export default function AboutClient() {
             transition={{ delay: 0.3 }}
             className="flex flex-wrap items-center justify-center gap-4 pt-4"
           >
-            <a
+            <Link
               href="/services/web-development"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-gradient-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg hover:shadow-indigo-200 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-semibold bg-linear-to-r from-indigo-600 to-violet-600 hover:opacity-95 shadow-lg hover:shadow-indigo-200 transition-all duration-300"
             >
               Explore Capabilities
-            </a>
+            </Link>
 
             {/* WhatsApp Integration */}
             <motion.a
@@ -168,25 +170,25 @@ export default function AboutClient() {
 
       {/* CTA Section */}
       <section className="py-24 px-6 md:px-20 bg-white border-t border-slate-100">
-        <div className="max-w-5xl mx-auto bg-gradient-to-r from-indigo-900 to-violet-950 rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden shadow-2xl">
+        <div className="max-w-5xl mx-auto bg-linear-to-r from-indigo-900 to-violet-950 rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
           
           <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-              Ready to Form a Digital Architecture?
+              Ready to Build Something Great?
             </h2>
             <p className="text-indigo-200 text-sm md:text-base leading-relaxed">
-              Let's map out your functional scope. Connect directly with our operations team via WhatsApp or initialize an interactive audit request today.
+              Let&apos;s map out your project. Message our team on WhatsApp or request a free project review today.
             </p>
             <div className="pt-4 flex flex-wrap justify-center gap-4">
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-indigo-950 font-bold hover:bg-slate-50 shadow-md transition-all duration-200 group"
               >
-                Initialize Project Audit
+                Request a Free Review
                 <ArrowUpRight size={16} className="ml-1 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              </Link>
               <a
                 href={whatsappUrl}
                 target="_blank"
