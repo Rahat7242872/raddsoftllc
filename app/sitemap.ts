@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/about", 0.7),
     entry("/contact", 0.8),
     entry("/privacy-policy", 0.2),
+    entry("/radd-scanner/privacy", 0.2),
     entry("/terms-of-service", 0.2),
   ];
 }
